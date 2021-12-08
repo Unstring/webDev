@@ -79,11 +79,12 @@
         if (cTool == "rectTool") {
             tool.fillRect(iX, iY, width, height);
         } else {
-            tool.beginPath();
-            tool.moveTo(iX, iY);
-            tool.lineTo(fX, fY);
-            tool.stroke();
-            console.log("Pencil tool is pending")
+            // tool.beginPath();
+            // tool.moveTo(iX, iY);
+            // tool.lineTo(fX, fY);
+            // tool.stroke();
+            // console.log("Pencil tool is pending");
+            tool.strokeRect(iX, iY, width, height);
         }
     })
 

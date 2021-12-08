@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temp Example</title>
+    <title>white Board</title>
+    <style>
+        body {
+            margin: 0%;
+        }
+
+        i {
+            color: rgb(69, 128, 216);
+            margin-left: 10px;
+            margin-top: 5px;
+            font-size: 1.4rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <h1>Canvas Example.</h1>
+    <!-- <h1>Canvas Example.</h1> -->
+
+    <i class="fas fa-square-full"></i>
+    <i class="fas fa-pen"></i>
+    <i class="far fa-square-full"></i>
+    <i class="fas fa-pencil-ruler"></i>
+    <i class="fas fa-eraser"></i>
 
     <canvas></canvas>
 </body>
 <script>
     let canvasBoard = document.querySelector("canvas");
-    canvasBoard.height = 900;
-    canvasBoard.width = 1600;
+    let rectTool = document.querySelector(".fa-square-full");
+    let PenTool = document.querySelector(".fa-pen");
+    let strokeTool = document.querySelector(".far");
+    let lineTool = document.querySelector(".fa-pencil-ruler");
+    let EraserTool = document.querySelector(".fa-eraser");
+    let cTool = "strokeTool";
+
+    canvasBoard.height = window.innerHeight;
+    canvasBoard.width = window.innerWidth;
 
     let tool = canvasBoard.getContext("2d");
+    let body = document.querySelector("body");
 
-    tool.fillStyle = "teal"
-    tool.fillRect(10, 30, 200, 300);
 
-    body.addEventListener("mousedown",function(){
-        alert("mouse pressed");
+
+    
+    // tool.fillStyle = "teal"
+    // tool.fillRect(10, 30, 200, 300);
+    
+    
+    rectTool.addEventListener("click", function(){
+        cTool = "rectTool";
+    });
+    PenTool.addEventListener("click", function(){
+        cTool = "PenTool";
+    });
+    strokeTool.addEventListener("click", function(){
+        cTool = "strokeTool";
+    });
+    lineTool.addEventListener("click", function(){
+        cTool = "lineTool";
+    });
+    EraserTool.addEventListener("click", function(){
+        cTool = "EraserTool";
     })
+    
+    let ix, iy, fx, fy;
+
+    body.addEventListener("mousedown", function (e) {
+        // alert("mouse pressed.");
+        ix = e.clientX;
+        iy = e.clientY;
+    });
+
+    body.addEventListener("mouseup", function (e) {
+        // alert("mouse lifted.");
+        fx = e.clientX;
+        fy = e.clientY;
+        let width = fx - ix;
+        let height = fy - iy;
+        tool.strokeStyle = "teal";
+        if (cTool == "strokeTool") {
+            tool.strokeRect(ix, iy, width, height);
+        }else if(cTool == "rectTool"){
+            tool.fillRect(ix, iy, width, height);
+        }else if(cTool == "PenTool"){
+
+        }else if(cTool == "lineTool"){
+            tool.beginPath();
+            tool.moveTo(ix, iy);
+            tool.lineTo(fx, fy);
+            tool.stroke();
+        }else if(cTool == "EraserTool"){
+
+        }
+    });
 </script>
+
 </html>
