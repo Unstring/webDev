@@ -35,7 +35,7 @@
     <i class="fas fa-file-upload"></i>
     <i class="fas fa-file-download"></i>
     <i class="fas fa-trash"></i>
-    
+
 
     <canvas></canvas>
 </body>
@@ -46,37 +46,44 @@
     let strokeTool = document.querySelector(".far");
     let lineTool = document.querySelector(".fa-pencil-ruler");
     let EraserTool = document.querySelector(".fa-eraser");
-    let cTool = "strokeTool";
+    let Redo = document.querySelector("fa-redo-alt");
+    let undo = document.querySelector("fa-undo-alt");
+    let Upload = document.querySelector("fa-file-upload");
+    let download = document.querySelector("fa-file-download");
+    let trash = document.querySelector("fa-trash");
+
+    let cTool = "lineTool";
 
     canvasBoard.height = window.innerHeight;
-    canvasBoard.width = window.innerWidth;
+    canvasBoard.width = window.innerWidth - 20;
 
     let tool = canvasBoard.getContext("2d");
     let body = document.querySelector("body");
 
 
 
-    
+
     // tool.fillStyle = "teal"
     // tool.fillRect(10, 30, 200, 300);
-    
-    
-    rectTool.addEventListener("click", function(){
+
+
+    rectTool.addEventListener("click", function () {
         cTool = "rectTool";
     });
-    PenTool.addEventListener("click", function(){
+    PenTool.addEventListener("click", function () {
         cTool = "PenTool";
     });
-    strokeTool.addEventListener("click", function(){
+    strokeTool.addEventListener("click", function () {
         cTool = "strokeTool";
     });
-    lineTool.addEventListener("click", function(){
+    lineTool.addEventListener("click", function () {
         cTool = "lineTool";
     });
-    EraserTool.addEventListener("click", function(){
+    EraserTool.addEventListener("click", function () {
         cTool = "EraserTool";
-    })
-    
+    });
+
+
     let ix, iy, fx, fy;
 
     body.addEventListener("mousedown", function (e) {
@@ -91,20 +98,20 @@
         fy = e.clientY;
         let width = fx - ix;
         let height = fy - iy;
-        tool.strokeStyle = "teal";
-        tool.fillStyle = "teal";
+        tool.strokeStyle = "rgb(69, 128, 216)";
+        tool.fillStyle = "rgb(69, 128, 216)";
         if (cTool == "strokeTool") {
             tool.strokeRect(ix, iy, width, height);
-        }else if(cTool == "rectTool"){
+        } else if (cTool == "rectTool") {
             tool.fillRect(ix, iy, width, height);
-        }else if(cTool == "PenTool"){
+        } else if (cTool == "PenTool") {
 
-        }else if(cTool == "lineTool"){
+        } else if (cTool == "lineTool") {
             tool.beginPath();
             tool.moveTo(ix, iy);
             tool.lineTo(fx, fy);
             tool.stroke();
-        }else if(cTool == "EraserTool"){
+        } else if (cTool == "EraserTool") {
 
         }
     });
