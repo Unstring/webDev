@@ -5,7 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>white Board</title>
+    <title>DrawingBoard</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <style>
         body {
             margin: 0%;
@@ -17,6 +26,33 @@
             margin-top: 5px;
             font-size: 1.4rem;
         }
+
+        i.fa-xts{
+            font-size: 4px;
+        }
+        i.fa-xs{
+            font-size: 50%;
+        }
+        i.c753188{
+            color:#753188;
+        }
+        i.c2C272E{
+            color:#2C272E;
+        }
+        i.cE59934{
+            color:#E59934;
+        }
+        i.c9AE66E{
+            color:#9AE66E;
+        }
+        i.c142F43{
+            color:#0F2C67;
+        }
+        i.cFF0000{
+            color:#FF0000;
+        }
+        
+        
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -36,6 +72,19 @@
     <i class="fas fa-file-download"></i>
     <i class="fas fa-trash"></i>
 
+    <i class="fas fa-circle fa-xts"></i>
+    <i class="fas fa-circle fa-xs"></i>
+    <i class="fas fa-circle fa-sm"></i>
+
+    <i class="fas fa-circle c753188"></i>
+    <i class="fas fa-circle c2C272E"></i>
+    <i class="fas fa-circle cE59934"></i>
+    <i class="fas fa-circle c9AE66E"></i>
+    <i class="fas fa-circle c142F43"></i>
+    <i class="fas fa-circle cFF0000"></i>
+    
+    
+
 
     <canvas></canvas>
 </body>
@@ -52,7 +101,7 @@
     let download = document.querySelector("fa-file-download");
     let trash = document.querySelector("fa-trash");
 
-    let cTool = "lineTool";
+    let cTool = "PenTool";
 
     canvasBoard.height = window.innerHeight;
     canvasBoard.width = window.innerWidth - 20;
@@ -85,17 +134,20 @@
 
 
     let ix, iy, fx, fy;
+    let activeMode = false;
 
     body.addEventListener("mousedown", function (e) {
         // alert("mouse pressed.");
         ix = e.clientX;
-        iy = e.clientY;
+        iy = e.clientY - 27.4;
+        activeMode = true;
     });
 
     body.addEventListener("mouseup", function (e) {
         // alert("mouse lifted.");
         fx = e.clientX;
-        fy = e.clientY;
+        fy = e.clientY - 27.4;
+        activeMode = false;
         let width = fx - ix;
         let height = fy - iy;
         tool.strokeStyle = "rgb(69, 128, 216)";
@@ -104,8 +156,6 @@
             tool.strokeRect(ix, iy, width, height);
         } else if (cTool == "rectTool") {
             tool.fillRect(ix, iy, width, height);
-        } else if (cTool == "PenTool") {
-
         } else if (cTool == "lineTool") {
             tool.beginPath();
             tool.moveTo(ix, iy);
@@ -115,6 +165,30 @@
 
         }
     });
+
+    body.addEventListener("mousemove", function (e) {
+        if (activeMode == true) {
+            fx = e.clientX;
+            fy = e.clientY - 27.4;
+            if (cTool == "PenTool") {
+                tool.beginPath();
+                tool.moveTo(ix, iy);
+                tool.lineTo(fx, fy);
+                tool.stroke();
+                ix = fx;
+                iy = fy;
+            }
+            if (cTool == "EraserTool") {
+                tool.beginPath();
+                tool.moveTo(ix, iy);
+                tool.lineTo(fx, fy);
+                tool.strokeStyle = "white";
+                tool.stroke();
+                ix = fx;
+                iy = fy;
+            }
+        }
+    })
 </script>
 
 </html>
