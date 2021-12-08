@@ -30,6 +30,13 @@
     <i class="fas fa-pencil-ruler"></i>
     <i class="fas fa-eraser"></i>
 
+    <i class="fas fa-undo-alt"></i>
+    <i class="fas fa-redo-alt"></i>
+    <i class="fas fa-file-upload"></i>
+    <i class="fas fa-file-download"></i>
+    <i class="fas fa-trash"></i>
+    
+
     <canvas></canvas>
 </body>
 <script>
@@ -85,6 +92,7 @@
         let width = fx - ix;
         let height = fy - iy;
         tool.strokeStyle = "teal";
+        tool.fillStyle = "teal";
         if (cTool == "strokeTool") {
             tool.strokeRect(ix, iy, width, height);
         }else if(cTool == "rectTool"){
