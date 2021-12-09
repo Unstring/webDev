@@ -154,14 +154,14 @@ $container.addEventListener( "click", ( e ) => {
 // $canvas.addEventListener('mouseout', up, false);
 
 if( $canvas.ontouchstart !== undefined ){
-    $canvas.ontouchstart = down
-    $canvas.ontouchmove = move
-    $canvas.ontouchend = up
+    $canvas.ontouchstart = down;
+    $canvas.ontouchmove = move;
+    $canvas.ontouchend = up;
 } else {
-    $canvas.onmousedown = down
-    $canvas.onmousemove = move
-    $canvas.onmouseup = up
-    $canvas.onmouseout = up
+    $canvas.onmousedown = down;
+    $canvas.onmousemove = move;
+    $canvas.onmouseup = up;
+    $canvas.onmouseout = up;
 }
 
 function down( ev ){
