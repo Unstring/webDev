@@ -101,6 +101,13 @@
     let download = document.querySelector("fa-file-download");
     let trash = document.querySelector("fa-trash");
 
+    let cPurple = document.querySelector(".c753188");
+    let cBlack = document.querySelector(".c2C272E");
+    let cYellow = document.querySelector(".cE59934");
+    let cGreen = document.querySelector(".c9AE66E");
+    let cBlue = document.querySelector(".c142F43");
+    let cRed = document.querySelector(".cFF0000");
+
     let cTool = "PenTool";
 
     canvasBoard.height = window.innerHeight;
@@ -133,6 +140,34 @@
     });
 
 
+
+    cColor =  "rgb(69, 128, 216)";
+
+
+
+    cPurple.addEventListener("click", function () {
+        cColor = "#753188";
+    });
+    cBlack.addEventListener("click", function () {
+        cColor = "#2C272E";
+    });
+    cYellow.addEventListener("click", function () {
+        cColor = "#E59934";
+    });
+    cGreen.addEventListener("click", function () {
+        cColor = "#9AE66E";
+    });
+    cBlue.addEventListener("click", function () {
+        cColor = "#142F43";
+    });
+    cRed.addEventListener("click", function () {
+        cColor = "#FF0000";
+    });
+
+
+
+
+
     let ix, iy, fx, fy;
     let activeMode = false;
 
@@ -150,8 +185,8 @@
         activeMode = false;
         let width = fx - ix;
         let height = fy - iy;
-        tool.strokeStyle = "rgb(69, 128, 216)";
-        tool.fillStyle = "rgb(69, 128, 216)";
+        tool.strokeStyle = cColor;
+        tool.fillStyle = cColor;
         if (cTool == "strokeTool") {
             tool.strokeRect(ix, iy, width, height);
         } else if (cTool == "rectTool") {
