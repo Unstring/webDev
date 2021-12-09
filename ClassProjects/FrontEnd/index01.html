@@ -55,7 +55,7 @@
         function (e) {
             iX = e.clientX+boardLeft;
             iY = e.clientY -boardTop;
-        })
+        });
     body.addEventListener("mouseup", function (e) {
         // console.log(e);
         fX = e.clientX+boardLeft;;
@@ -71,7 +71,7 @@
             tool.stroke();
             console.log("Pencil tool is pending")
         }
-    })
+    });
     // alert("mouse was pressed on body");
             // console.log(e);
             // let xPos = e.clientX;

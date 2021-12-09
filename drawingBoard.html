@@ -27,28 +27,28 @@
             font-size: 1.4rem;
         }
 
-        i.fa-xts{
+        i.fa-xts {
             font-size: 4px;
         }
-        i.fa-xs{
+        i.fa-xs {
             font-size: 50%;
         }
-        i.c753188{
+        i.c753188 {
             color:#753188;
         }
-        i.c2C272E{
+        i.c2C272E {
             color:#2C272E;
         }
-        i.cE59934{
+        i.cE59934 {
             color:#E59934;
         }
-        i.c9AE66E{
+        i.c9AE66E {
             color:#9AE66E;
         }
-        i.c142F43{
+        i.c142F43 {
             color:#0F2C67;
         }
-        i.cFF0000{
+        i.cFF0000 {
             color:#FF0000;
         }
         
@@ -109,18 +109,19 @@
     let cRed = document.querySelector(".cFF0000");
 
     let cTool = "PenTool";
-
+    let cColor =  "rgb(69, 128, 216)";
+    
     canvasBoard.height = window.innerHeight;
     canvasBoard.width = window.innerWidth - 20;
-
+    
     let tool = canvasBoard.getContext("2d");
     let body = document.querySelector("body");
+    
+    let ix, iy, fx, fy;
+    let activeMode = false;
 
 
 
-
-    // tool.fillStyle = "teal"
-    // tool.fillRect(10, 30, 200, 300);
 
 
     rectTool.addEventListener("click", function () {
@@ -139,9 +140,6 @@
         cTool = "EraserTool";
     });
 
-
-
-    cColor =  "rgb(69, 128, 216)";
 
 
 
@@ -168,8 +166,6 @@
 
 
 
-    let ix, iy, fx, fy;
-    let activeMode = false;
 
     body.addEventListener("mousedown", function (e) {
         // alert("mouse pressed.");
@@ -200,6 +196,7 @@
 
         }
     });
+    
 
     body.addEventListener("mousemove", function (e) {
         if (activeMode == true) {
