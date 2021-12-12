@@ -2,7 +2,6 @@
 
 // npm init -y
 // npm install puppeteer
-// 
 
 let puppeteer = require("puppeteer");
 let fs = require("fs");
@@ -53,5 +52,41 @@ async function run(){
     await page.waitForSelector("a[href='/the-placement-program-pitampura-jun-22-2021/130/classvideos/6241']");
     await page.click("a[href='/the-placement-program-pitampura-jun-22-2021/130/classvideos/6241']");
 
-    
+    // await page.waitForSelector("li[class='searchRow']");
+    // let urls = await page.$$eval("li[class='searchRow']", function (atag) {
+    //     let np = parseInt(atag.getAttribute("a[href]"));
+    //     return np;
+    // })
+
+    // console.log(urls);
+
+    await handlePage(browser, page);
 }
+
+
+async function handlePage(browser, page){
+    await page.waitForSelector("span.bold");
+    let ourls = await page.$$eval("span.bold", function(atags){
+        let iurls = [];
+        for (let i = 0; i < atags.length; i++) {
+            let url = atags[i].getAttribute("title");
+            iurls.push(url);            
+        }
+        return iurls;
+    });
+    console.log(ourls);
+}
+
+
+// async function handlePage(browser, page){
+//     await page.waitForSelector("li.searchRow > a");
+//     let ourls = await page.$$eval("li.searchRow > a", function(atags){
+//         let iurls = [];
+//         for (let i = 0; i < atags.length; i++) {
+//             let url = "https://classroom.pepcoding.com/" + atags[i].getAttribute("href");
+//             iurls.push(url);            
+//         }
+//         return iurls;
+//     });
+//     console.log(ourls);
+// }

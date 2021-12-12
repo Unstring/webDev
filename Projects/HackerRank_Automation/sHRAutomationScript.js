@@ -105,16 +105,16 @@ async function handlePage(browser, page){
 
 
 
-async function handleContest(browser, page, curl){
-    let npage = await browser.newPage();
-    await npage.goto(args.url + curl);
+// async function handleContest(browser, page, curl){
+//     let npage = await browser.newPage();
+//     await npage.goto(args.url + curl);
 
-    await npage.waitFor(1000);
-    await npage.close();
-    await page.waitFor(1000);
+//     await npage.waitFor(1000);
+//     await npage.close();
+//     await page.waitFor(1000);
     
 
-}
+// }
 
 
 
