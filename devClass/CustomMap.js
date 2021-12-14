@@ -19,6 +19,7 @@ Array.prototype.myMap = function(callback){
 // Single value returned by each run of callback will be collected in a new array by map
 // Map returns that new array
 // length of returned array is equal to original array
+
 let arr = [2, 5, 9, 8, 15, 11, 6];
 
 let sqarr = arr.myMap(function(v, i, oarr){
