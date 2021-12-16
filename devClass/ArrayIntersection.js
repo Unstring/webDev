@@ -18,6 +18,7 @@ console.log(res);
 let res2 = arr2d.reduce(
     function (pv, cv) {
         let res = pv.filter(v => cv.includes(v));
+        res = res.concat(cv);
         return res;
     }
 )
