@@ -9,6 +9,10 @@ function enterFirstName(firstName){
 }
 
 console.log("Kindly enter your first name");
-let entername = enterFirstName("Amit");
+let enterLastName = enterFirstName("Amit");
 console.log("Enter last name.");
-let 
+let enterage = enterLastName("Anand");
+console.log("EnterAge");
+let details = enterAge(25);
+console.log("rendom text");
+enterDetail();
